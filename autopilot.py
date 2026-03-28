@@ -1,22 +1,9 @@
-"""
-AutoRC — Tesla-Style Autonomous Navigation
-==========================================
-Full occupancy-grid path planning with:
-  - Per-frame occupancy grid with safety margins
-  - Scipy spline smoothing through waypoints
-  - Pure-pursuit lookahead steering
-  - Tesla-style HUD: corridor, spline path, bounding boxes, status panel
-
-Controls (window must be focused):
+Controls:
   ESC / Q  - Quit
   A        - Start driving (unpause)
   S        - Stop driving (pause)
   D        - Toggle debug overlay
   1-5      - Set speed preset
-
-Edit CAM_URL and MOTOR_IP below, then:  python autopilot.py
-"""
-
 import cv2
 import numpy as np
 import requests
@@ -29,11 +16,6 @@ import matplotlib.pyplot as plt
 from scipy.interpolate import splprep, splev
 import socket
 import concurrent.futures
-
-# ─────────────────────────── CONFIG ─────────────────────────────────
-
-# You can use raw IPs, or if mDNS/Bonjour is running on the ESP32s, just use their hostnames!
-# Example: CAM_URL = "http://esp32-cam.local:81/stream", MOTOR_IP = "esp32-motor.local"
 CAM_URL   = "http://192.168.137.136:81/stream" # Fallback — scanner auto-discovers the real IP
 MOTOR_IP  = "192.168.137.50"                   # Fallback — scanner auto-discovers the real IP
 
